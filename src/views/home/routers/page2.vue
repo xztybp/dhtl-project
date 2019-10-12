@@ -1,6 +1,6 @@
 <template>
-  <div class="main">
-      这是main
+  <div class="page2">
+      page2
   </div>
 </template>
 

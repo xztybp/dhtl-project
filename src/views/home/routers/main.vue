@@ -1,7 +1,8 @@
 <template>
-    <div class="left">
-        这是左边
-    </div>
+  <div class="main">
+      这是main
+      <router-view></router-view>
+  </div>
 </template>
 
 <script>

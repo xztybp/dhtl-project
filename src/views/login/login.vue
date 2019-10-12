@@ -16,11 +16,13 @@
             <el-input v-model="ruleForm.code" placeholder="验证码"></el-input>
           </el-col>
           <el-col :span="8">
+            <!-- :class="[timer? 'fontsize':'']" 通过三元表达式动态改变字体大小 -->
             <el-button
               type="primary"
               @click="onSubmit"
               class="right"
               :disabled="!!timer"
+              :class="[timer? 'fontsize':'']"
             >{{ timer? `${count.toString().padStart(2,'0')}s后重新获取`:'发送验证码'}}</el-button>
           </el-col>
         </el-form-item>
@@ -95,14 +97,15 @@ export default {
             method: 'POST',
             data: this.ruleForm
           }).then(res => {
-            this.$message({
-              message: '恭喜你，你已成功登陆',
-              type: 'success'
-            })
             setTimeout(() => {
               this.loading = false
               this.$router.push('/index')
+              this.$message({
+                message: '恭喜你，你已成功登陆',
+                type: 'success'
+              })
             }, 1000)
+            localStorage.setItem('userInfo', JSON.stringify(res))
           })
         } else {
           console.log('error submit!!')
@@ -161,9 +164,16 @@ export default {
           position: absolute;
           right: 0;
         }
+        button.fontsize {
+          font-size: 10px;
+          font-weight: 400;
+        }
       }
       .checkbox {
         margin-bottom: 20px;
+        .el-checkbox__label {
+          color: red;
+        }
       }
       .login-btn {
         width: 100%;
