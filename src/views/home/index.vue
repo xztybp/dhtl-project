@@ -1,6 +1,6 @@
 <template>
   <div class="index">
-    <el-container>
+    <el-container v-loading.fullscreen="loading">
       <el-aside width="200px">
         <left-nav></left-nav>
       </el-aside>
@@ -20,6 +20,21 @@
 import topNav from './components/header'
 import leftNav from './components/left-nav'
 export default {
+  data () {
+    return {
+      loading: false
+    }
+  },
+  watch: {
+    $route () {
+      console.log(this.$route)
+      this.loading = true
+      setTimeout(() => {
+        this.loading = false
+      }, 500)
+    }
+  },
+  updated () {},
   components: {
     topNav,
     leftNav
@@ -27,7 +42,7 @@ export default {
 }
 </script>
 
-<style  lang="less">
+<style  lang="less" scoped>
 div.index {
   height: 100%;
   .el-container {

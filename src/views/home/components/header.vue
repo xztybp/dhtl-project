@@ -7,11 +7,11 @@
       <el-input placeholder="请输入内容">
         <i slot="prefix" class="el-input__icon el-icon-search"></i>
       </el-input>
-      <el-dropdown placement="bottom" size="medium">
+      <el-dropdown placement="bottom" size="medium" :style="{marginRight: '10px'}">
         <span class="el-dropdown-link">消息</span>
         <el-dropdown-menu
           slot="dropdown"
-          :style="{backgroundColor:'#2c3e50',color:'#fff',padding:'5px'}"
+          :style="{backgroundColor:'#2c3e50',color:'#fff',padding:'8px',fontSize:'12px'}"
         >消息</el-dropdown-menu>
       </el-dropdown>
       <img :src="userInfo.photo" alt />
@@ -40,7 +40,7 @@ export default {
   methods: {
     getuserInfo () {
       let userInfo = JSON.parse(localStorage.getItem('userInfo'))
-      this.userInfo = userInfo.data.data
+      this.userInfo = userInfo
     }
   },
   created () {
@@ -52,9 +52,8 @@ export default {
 <style lang="less" scoped>
 div.header {
   height: 100%;
-  position: relative;
+  display: flex;
   .left-title {
-    position: absolute;
     line-height: 50px;
   }
   .right-title {
@@ -70,19 +69,10 @@ div.header {
     img {
       width: 35px;
       height: 35px;
+      margin-right: 10px;
       line-height: 50px;
       line-height: 50px;
       border-radius: 50%;
-    }
-    .el-dropdown {
-      display: flex;
-      align-items: center;
-      span.el-dropdown-link {
-        cursor: default;
-        i {
-          margin: 0;
-        }
-      }
     }
   }
 }
