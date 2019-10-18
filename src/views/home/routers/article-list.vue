@@ -69,7 +69,7 @@
       <el-pagination
         :background="true"
         layout="prev, pager, next"
-        :total="total"
+        :total="100"
         @next-click="nextclick"
         @prev-click="prevClick"
         @current-change="currentChange"
@@ -169,13 +169,13 @@ export default {
       this.getArticleList()
     },
     // 上一页
-    prevClick (page) {
+    prevClick () {
       /* console.log(page) */
       this.page--
       this.getArticleList()
     },
     // 下一页
-    nextclick (page) {
+    nextclick () {
       this.page++
       this.getArticleList()
     },
@@ -217,6 +217,7 @@ export default {
   created () {
     this.getArticleList()
     this.getchannels()
+    console.log(this)
   }
 }
 </script>

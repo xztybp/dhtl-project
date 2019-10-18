@@ -27,7 +27,7 @@ export default {
   },
   watch: {
     $route () {
-      console.log(this.$route)
+      /*  console.log(this.$route) */
       this.loading = true
       setTimeout(() => {
         this.loading = false
