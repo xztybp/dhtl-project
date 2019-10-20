@@ -34,7 +34,9 @@ export default {
       }, 500)
     }
   },
-  updated () {},
+  updated () {
+    /*  console.log(this) */
+  },
   components: {
     topNav,
     leftNav

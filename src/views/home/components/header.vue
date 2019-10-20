@@ -39,12 +39,13 @@ export default {
   },
   methods: {
     getuserInfo () {
-      let userInfo = JSON.parse(localStorage.getItem('userInfo'))
-      this.userInfo = userInfo
+      /*  let userInfo = JSON.parse(localStorage.getItem('userInfo')) */
+      this.userInfo = this.$store.state.userInfo
     }
   },
   created () {
     this.getuserInfo()
+    // console.log(this.userInfo)
   }
 }
 </script>

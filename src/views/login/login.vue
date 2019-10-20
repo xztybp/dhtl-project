@@ -105,7 +105,10 @@ export default {
                 type: 'success'
               })
             }, 1000)
-            localStorage.setItem('userInfo', JSON.stringify(res))
+            /* localStorage.setItem('userInfo', JSON.stringify(res)) */
+            // 调用vuex中方法,储存组件共有数据
+            this.$store.commit('getUserInfo', res)
+            console.log(res)
           })
         } else {
           console.log('error submit!!')

@@ -13,6 +13,7 @@ import '@/styles/reset.css'
 Vue.use(VueFroala)
 Vue.use(Router)
 Vue.use(ElementUI)
+console.dir(Router)
 // 设置 axios 的拦截器
 // 请求拦截器：发送请求之前执行
 axios.interceptors.request.use(function (config) {

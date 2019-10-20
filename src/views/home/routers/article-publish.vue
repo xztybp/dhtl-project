@@ -74,6 +74,9 @@
               layout="prev, pager, next"
               :total="total"
               :style="{textAlign:'center'}"
+              @next-click="nextclick"
+              @prev-click="prevClick"
+              @current-change="currentChange"
             ></el-pagination>
           </el-card>
         </el-tab-pane>
@@ -212,13 +215,27 @@ export default {
         method: 'GET',
         params: {
           collect: collect,
-          per_page: 8
+          per_page: 8,
+          page: this.page
         }
       }).then(res => {
         console.log(res)
         this.imageList = res.results
         this.total = res.total_count
       })
+    },
+    // 分页功能
+    nextclick () {
+      this.page++
+      this.getImageList()
+    },
+    prevClick () {
+      this.page--
+      this.getImageList()
+    },
+    currentChange (page) {
+      this.page = page
+      this.getImageList()
     },
     // 点击图片获取图片idf
     getimgID (url, index) {

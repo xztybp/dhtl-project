@@ -43,7 +43,7 @@ router.beforeEach((to, from, next) => {
   // 在lint中 判等必须使用全等
   if (to.path !== '/login') {
     /*   console.log(to)
-                              console.log(from) */
+                                              console.log(from) */
     let userInfnfo = localStorage.getItem('userInfo')
     if (!userInfnfo) {
       router.push('/login')
@@ -58,4 +58,8 @@ router.beforeEach((to, from, next) => {
 router.afterEach((to, from, next) => {
   NProgress.done()
 })
+const originalPush = Router.prototype.push
+Router.prototype.push = function push (location) {
+  return originalPush.call(this, location).catch(err => err)
+}
 export default router
